@@ -5,6 +5,15 @@ const CALENDAR_ID = "55319adb44ec2783481a05dc58524b4b2bfebe68533fc2a5b63e9e0aea7
 // Element where events will be displayed
 const eventsEl = document.getElementById("events");
 
+function stringToNumber(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+    }
+    return hash;
+}
+
+
 // Fetch upcoming events from Google Calendar API
 async function fetchEvents() {
     const now = new Date().toISOString();
@@ -35,15 +44,17 @@ function renderEvents(events) {
         eventsEl.innerHTML = "<p>No upcoming events.</p>";
         return;
     }
-
+    console.log(events);
     eventsEl.innerHTML = events
         .map(event => {
             const start = event.start.dateTime || event.start.date || '';
             const date = new Date(start);
             const pretty = isNaN(date) ? start : date.toLocaleString();
+            const colorIndex = stringToNumber(event.id) % 5;
 
             return `
-                <div class="event">
+                <div class="event"
+                style="--event-bg: var(--palette-${colorIndex})">
                     <strong>${event.summary || "(no title)"}</strong>
                     <div class="time">${pretty}</div>
                     ${event.location ? `<div>${event.location}</div>` : ""}
