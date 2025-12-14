@@ -1,0 +1,32 @@
+:root {
+    --bg-page: #040D17;
+
+    --palette-0: #FD7C21;
+    --palette-1: #016DFC;
+    --palette-2: #C6AE02;
+    --palette-3: #3AA336;
+    --palette-4: #A695C5;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: #eee;
+}
+
+
+/* Google Calendar events styling */
+#events {
+    margin-top: 2rem;
+}
+
+.event {
+    border-bottom: 1px solid #eee;
+    padding: 0.6rem 0;
+    --event-bg: var(--palette-0);
+    background-color: var(--event-bg);
+}
+
+.time {
+    color: #666;
+    font-size: 0.9em;
+}
