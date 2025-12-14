@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>100 Years of Prince Achmed</title>
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Styles for the calendar events -->
+    <style>
+        /* Google Calendar events styling */
+        #events {
+            margin-top: 2rem;
+        }
+        .event {
+            border-bottom: 1px solid #eee;
+            padding: 0.6rem 0;
+        }
+        .time {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,15 +31,24 @@
 
     <main>
         <p>An international event series celebrating the centenary of the
-            earliest-surviving feature film in animation history, The Adventures of Prince Achmed,
+            earliest-surviving feature film in animation history, The Adventures of Prince Achmed (1926),
             made by pioneer, Lotte Reiniger.</p>
+
+        <!-- Calendar section -->
+        <section>
+            <h2>Upcoming Events</h2>
+            <div id="events">Loading…</div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2025 100 Years of Prince Achmed</p>
     </footer>
 
+    <!-- Your original JS -->
     <script src="script.js"></script>
+    <!-- Google Calendar JS -->
+    <script src="calendar.js"></script>
 </body>
 
 </html>
