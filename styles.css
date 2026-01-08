@@ -6,24 +6,51 @@
     --palette-2: #C6AE02;
     --palette-3: #3AA336;
     --palette-4: #A695C5;
+    --palette-5: #e3453e;
 }
+
 
 body {
     background-color: var(--bg-page);
+    background-image: url('images/black-card-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+
     color: #eee;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 
 /* Google Calendar events styling */
 #events {
-    margin-top: 2rem;
+    margin: 2rem auto;
+    max-width: 700px;
+    width: 90%;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
+
 .event {
-    border-bottom: 1px solid #eee;
-    padding: 0.6rem 0;
     --event-bg: var(--palette-0);
-    background-color: var(--event-bg);
+
+    color: #040D17;
+    background: var(--event-bg, #f6f1e7);
+
+    padding: 16px 18px;
+    margin: 20px 0;
+
+    border-radius: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .time {

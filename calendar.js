@@ -8,7 +8,7 @@ const eventsEl = document.getElementById("events");
 function stringToNumber(str) {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
-        hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+        hash = (hash * 29 + str.charCodeAt(i)) >>> 0;
     }
     return hash;
 }
@@ -50,7 +50,7 @@ function renderEvents(events) {
             const start = event.start.dateTime || event.start.date || '';
             const date = new Date(start);
             const pretty = isNaN(date) ? start : date.toLocaleString();
-            const colorIndex = stringToNumber(event.id) % 5;
+            const colorIndex = stringToNumber(event.id) % 6;
 
             return `
                 <div class="event"
