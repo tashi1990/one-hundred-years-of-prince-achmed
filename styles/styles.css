@@ -10,22 +10,22 @@
 }
 
 .visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .container {
-    max-width: 700px;       /* same as #events max-width */
-    width: 90%;             /* responsive width */
-    margin: 0 auto;         /* centers the column horizontally */
-    padding: 2rem 1rem;     /* breathing room from top/bottom and sides */
+    max-width: 700px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
     box-sizing: border-box;
 }
 
@@ -39,19 +39,31 @@
     mask-position: center;
 }
 
-body {
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
     background-color: var(--bg-page);
     background-image: url('/images/black-card-background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center top;
-    background-attachment: fixed;
+    background-position: top left;
+
+    z-index: -1;
+}
+
+body {
+    background: none;
     color: #eee;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
     padding: 0;
 }
-
 
 .events-section {
     margin-top: 4rem;
@@ -99,6 +111,7 @@ p {
     font-size: larger;
     color: #ddd;
 }
+
 .film-background-section p {
     line-height: 1.65;
     font-size: 0.95rem;
@@ -113,5 +126,5 @@ p {
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;
-    margin-bottom: 4rem;  
+    margin-bottom: 4rem;
 }
