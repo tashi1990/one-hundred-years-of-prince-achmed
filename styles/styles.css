@@ -1,5 +1,5 @@
 :root {
-    --bg-page: #040D17;
+    --bg-page: #2E3234;
 
     --palette-0: #FD7C21;
     --palette-1: #016DFC;
@@ -39,30 +39,16 @@
     mask-position: center;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    background-color: var(--bg-page);
-    background-image: url('/images/black-card-background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top left;
-
-    z-index: -1;
-}
-
 body {
     background: none;
-    color: #eee;
+    color: #EEE;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
-    padding: 0;
+    background-color: var(--bg-page);
+}
+
+html, body {
+    overflow-x: hidden;
 }
 
 .events-section {
