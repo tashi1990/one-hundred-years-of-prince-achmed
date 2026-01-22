@@ -85,6 +85,7 @@ html, body {
 
 .subtitle {
     margin-top: 4rem;
+    margin-bottom: 1rem;
 }
 
 .film-background-section {
@@ -119,6 +120,18 @@ p {
     margin-bottom: 4rem;
 }
 
+@media (max-width: 480px) {
+    #contact a {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        font-size: 0.8rem;
+    }
+}
+
 a {
     color: #016DFC;
     text-decoration: none;
@@ -132,5 +145,15 @@ a:focus {
 
 a:visited {
     color: #C6AE02;
+}
+
+/* Smooth scrolling for all anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Space above sections when linked via href */
+#film-background-section{
+  scroll-margin-top: 20px; /* adjust to your desired padding */
 }
 
