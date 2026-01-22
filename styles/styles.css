@@ -114,3 +114,23 @@ p {
     mask-position: center;
     margin-bottom: 4rem;
 }
+
+#contact {
+    margin-bottom: 4rem;
+}
+
+a {
+    color: #016DFC;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: #FD7C21;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #C6AE02;
+}
+
