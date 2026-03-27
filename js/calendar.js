@@ -2,8 +2,9 @@
 const API_KEY = "AIzaSyBwjQrcIu6rtRTH9eH1WFedLBBwhPumRL8"; // Your Google Cloud API Key
 const CALENDAR_ID = "55319adb44ec2783481a05dc58524b4b2bfebe68533fc2a5b63e9e0aea74484a@group.calendar.google.com"; // Your public Google Calendar ID
 
-// Element where events will be displayed
+// Elements
 const eventsEl = document.getElementById("events");
+const pastEventsEl = document.getElementById("past-events");
 
 function stringToNumber(str) {
     let hash = 0;
@@ -30,7 +31,7 @@ async function fetchEvents() {
         if (!res.ok) throw new Error(`HTTP ${res.status} - ${res.statusText}`);
 
         const data = await res.json();
-        renderEvents(data.items || []);
+        renderEvents(data.items || [], eventsEl);
 
     } catch (err) {
         eventsEl.innerHTML = `<p style="color:red">Error loading events: ${err.message}</p>`;
@@ -39,13 +40,13 @@ async function fetchEvents() {
 }
 
 // Render events into the page
-function renderEvents(events) {
+function renderEvents(events, target = eventsEl, emptyMessage = "No upcoming events.") {
     if (!events.length) {
-        eventsEl.innerHTML = "<p>No upcoming events.</p>";
+        target.innerHTML = `<p>${emptyMessage}</p>`;
         return;
     }
     console.log(events);
-    eventsEl.innerHTML = events
+    target.innerHTML = events
         .map(event => {
             const start = event.start.dateTime || event.start.date || '';
             const date = new Date(start);
@@ -64,6 +65,53 @@ function renderEvents(events) {
         })
         .join("");
 }
+
+// Fetch past events from Google Calendar API
+async function fetchPastEvents() {
+    const now = new Date().toISOString();
+    const url =
+        `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events` +
+        `?key=${API_KEY}` +
+        `&timeMax=${encodeURIComponent(now)}` +
+        `&singleEvents=true` +
+        `&orderBy=startTime` +
+        `&maxResults=50`;
+
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status} - ${res.statusText}`);
+
+        const data = await res.json();
+        const items = (data.items || []).reverse();
+        renderEvents(items, pastEventsEl, "No past events found.");
+
+    } catch (err) {
+        pastEventsEl.innerHTML = `<p style="color:red">Error loading events: ${err.message}</p>`;
+        console.error(err);
+    }
+}
+
+// Tab switching
+let pastLoaded = false;
+document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        if (tab.dataset.tab === "upcoming") {
+            eventsEl.hidden = false;
+            pastEventsEl.hidden = true;
+        } else {
+            eventsEl.hidden = true;
+            pastEventsEl.hidden = false;
+            if (!pastLoaded) {
+                pastEventsEl.innerHTML = "Loading…";
+                pastLoaded = true;
+                fetchPastEvents();
+            }
+        }
+    });
+});
 
 // Initialize
 fetchEvents();

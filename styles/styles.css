@@ -54,6 +54,53 @@ html, body {
     margin-top: 4rem;
 }
 
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tab {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-family: inherit;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+}
+
+.tab::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: transparent;
+    margin-top: 4px;
+    transition: background 0.2s;
+}
+
+.tab.active {
+    color: #EEE;
+}
+
+.tab.active::after {
+    background: #EEE;
+}
+
+.tab:not(.active):hover {
+    color: #ccc;
+}
+
+.tabs .tab:not(:last-child)::before {
+    content: '/';
+    position: absolute;
+    right: -0.4rem;
+    color: #555;
+    font-weight: 300;
+}
+
 #events {
     margin: 2rem auto;
 }

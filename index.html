@@ -29,8 +29,12 @@
         </header>
 
         <section class="events-section">
-            <h2>Upcoming Events</h2>
+            <div class="tabs">
+                <button class="tab active" data-tab="upcoming">Upcoming Events</button>
+                <button class="tab" data-tab="past">Past Events</button>
+            </div>
             <div id="events">Loading…</div>
+            <div id="past-events" hidden></div>
         </section>
         <section class="film-background-section" id="film-background-section">
             <h2>
