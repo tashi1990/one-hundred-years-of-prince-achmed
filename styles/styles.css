@@ -2,11 +2,10 @@
     --bg-page: #2E3234;
 
     --palette-0: #FD7C21;
-    --palette-1: #016DFC;
+    --palette-1: #A695C5;
     --palette-2: #C6AE02;
     --palette-3: #3AA336;
-    --palette-4: #A695C5;
-    --palette-5: #e3453e;
+    --palette-4: #e3453e;
 }
 
 .visually-hidden {
@@ -139,12 +138,8 @@ a {
 
 a:hover,
 a:focus {
-    color: #FD7C21;
+    color: #0b52ae;
     text-decoration: underline;
-}
-
-a:visited {
-    color: #C6AE02;
 }
 
 /* Smooth scrolling for all anchor links */
