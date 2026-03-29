@@ -56,7 +56,7 @@ html, body {
 
 .tabs {
     display: flex;
-    gap: 0.5rem;
+    justify-content: space-between;
     margin-bottom: 0.5rem;
 }
 
@@ -93,13 +93,6 @@ html, body {
     color: #ccc;
 }
 
-.tabs .tab:not(:last-child)::before {
-    content: '/';
-    position: absolute;
-    right: -0.4rem;
-    color: #555;
-    font-weight: 300;
-}
 
 #events {
     margin: 2rem auto;
